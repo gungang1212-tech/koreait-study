@@ -1,0 +1,13 @@
+CREATE TABLE member_notnull (
+	id varchar(50)  NOT NULL,
+	pwd varchar(250) NOT NULL,
+	name varchar(50),
+	age int,
+	in_date datetime
+
+);
+
+INSERT INTO member_notnull
+values('piano0224', '12345', null, 19, now());
+
+SELECT * FROM member_notnull;

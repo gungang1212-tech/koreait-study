@@ -1,0 +1,114 @@
+-- employees라는 데이터베이스 선택
+use employees;
+
+select * from employees;
+
+select emp_no, birth_date from employees;
+select hire_date from employees;
+select emp_no, from_date, to_date from dept_manager;
+select * from departments;
+
+insert into EMPLOYEES
+values(1,   
+	   '2000-01=01',
+	   'jaeseop',
+	   'kim',
+	   'M',
+	   now());
+
+
+
+INSERT INTO departments VALUES ("d010", "Korea It Department" );
+INSERT INTO employees VALUES (2, 2002-01-01, "kim", "sungwong", "M", now());
+INSERT INTO dept_emp values(1, "d010", now(), 9999-01-01);
+
+SELECT * FROM departments;
+SELECT * FROM employees;
+
+UPDATE employees
+SET first_name = '길동',
+WHERE emp_no = 10001;
+  
+SELECT * FROM employees;
+-- UPDATE employees
+-- SET last_name = '홍',
+-- 	hire_date = now()
+-- WHERE emp_no = 10001;
+-- 
+-- SELECT * FROM employees;
+
+
+
+UPDATE departments
+SET dept_name = 'tech sales'
+WHERE dept_no = 'd007';
+     
+SELECT * FROM departments;
+
+
+
+UPDATE employees 
+SET birth_date = '1977-07-07'
+WHERE last_name ='Erie';
+
+SELECT * FROM employees
+WHERE last_name = 'Erie';
+
+DELETE FROM employees 
+WHERE emp_no = 10005;
+
+SELECT * FROM employees;
+
+DELETE FROM employees 
+WHERE hire_date = '1993-05-12';
+SELECT * FROM employees;
+
+SELECT * FROM employees
+WHERE hire_date = '1993- 05-12';
+
+
+DELETE FROM employees
+WHERE emp_no = 28847;
+
+SELECT FROM employees;
+
+
+CREATE TABLE ddl_alter_test (alter_id varchar(25)	
+	    alter_name varchar(255), 
+	    alter_as varchar(255));
+ 
+ALTER TABLE ddl_alter_test RENAME TO ddl_alter; 
+ 
+ 
+
+ALTER TABLE ddl_alter
+MODIFY alter_as varchar(100);
+ 
+ALTER TABLE ddl_alter
+	ADD alter_pwd varchar(255);
+ 
+ALTER TABLE ddl_alter DROP COLUMN alter_as;
+ 
+ALTER TABLE ddl_alter
+ADD CONSTRAINT alter_name_unique UNIQUE(alter_name);
+
+
+SELECT * FROM ddl_alter;
+
+INSERT INTO ddl_alter values("nirsa", "김재섭","qwer1234!");                      
+insert into ddl_alter values("test","김재섭","1111");
+ 
+ 
+ALTER TABLE ddl_alter 
+DROP CONSTRAINT alter_name_unique;
+
+ALTER TABLE ddl_alter
+	RENAME ddl_alter2;
+
+SELECT * ddl_alter2;
+
+
+
+
+
+

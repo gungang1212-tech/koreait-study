@@ -1,0 +1,16 @@
+
+
+salaries 테이블에서 salary 칼럼의 값을 월급이라고 가정
+
+1. 월급 (기존값)
+2. 예상 연봉(salary * 12) 별칭은 "예상 연봉"
+3. 5% 이상 후의 예상 (salary * 12 * 1.05) 별칭 "인상 후 예상 연봉"
+
+SELECT salary FROM  salaries;
+SELECT salary * 12 AS '예상 연봉' FROM salaries s;
+SELECT salary * 1.05 AS '인상 후 예상 연봉' FROM salaries s;
+
+SELECT salary,
+  	  salary * 12 AS '예상 연봉',
+  	  salary * 12 * 1.05 AS '인상 후 예상 연봉'
+FROM salaries s;

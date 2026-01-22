@@ -1,0 +1,57 @@
+
+
+salaries 테이블에서 salary 칼럼의 값을 월급이라고 가정
+
+1. 월급 (기존값)
+2. 예상 연봉(salary * 12) 별칭은 "예상 연봉"
+3. 5% 이상 후의 예상 (salary * 12 * 1.05) 별칭 "인상 후 예상 연봉"
+
+SELECT salary FROM  salaries;
+SELECT salary * 12 AS '예상 연봉' FROM salaries s;
+SELECT salary * 1.05 AS '인상 후 예상 연봉' FROM salaries s;
+
+SELECT salary,
+  	  salary * 12 AS '예상 연봉',
+  	  salary * 12 * 1.05 AS '인상 후 예상 연봉'
+FROM salaries s;
+
+SELECT emp_no , salary, FROM_date, to_date FROM salaries s
+WHERE salary >= 80000;
+
+SELECT * FROM employees
+WHERE emp_no < 10005;
+
+-- 입사일이 1960년 1월 1일 이후이면서 성별이 남자인 직원 조회
+SELECT * FROM employees 
+WHERE hire_date > '1960-01-01'
+AND gender = 'M';
+
+SELECT * FROM titles
+WHERE title = 'Senior Engineer'
+OR title = 'Engineer';
+
+SELECT * FROM salaries;
+-- salaries 테이블에서 연봉이 50000 이상이면서  60000 이하인 직원 조회
+
+SELECT emp_no, salary FROM salaries
+WHERE salary >= 50000 AND salary <= 60000;
+
+-- salaries 테이블에서 연봉이 50000 이상이면서 60000 미만인 직원 조회
+
+SELECT * FROM salaries s
+WHERE salary between 50000 AND 60000;
+
+SELECT * FROM employees
+WHERE emp_no BETWEEN 10000 AND 10005;
+
+SELECT * FROM employees
+WHERE hire_date BETWEEN '1995-01-01' AND '1995-12-31';
+
+SELECT * FROM employees
+WHERE first_name LIKE 'N%';
+
+SELECT * FROM employees
+WHERE FIRST_name LIKE '%en';
+
+SELECT * FROM employees 
+WHERE first_name like'%ar%;

@@ -1,0 +1,13 @@
+SELECT * FROM employees;
+SELECT * FROM employees
+WHERE GENDER = 'M';
+SELECT emp_no, hire_date FROM employees
+	WHERE hire_date >= '1990-01-01';
+
+SELECT emp_no, first_name FROM employees
+	WHERE first_name = 'Georgi';
+
+SELECT emp_no, first_name FROM employees
+	WHERE emp_no = 10010;
+
+INSERT VALUES 'AI Research ' INTO employees;

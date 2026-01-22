@@ -1,0 +1,5 @@
+SELECT * FROM employees;
+SELECT * FROM employees
+WHERE GENDER = 'M';
+SELECT * FROM employees
+	WHERE hire_date >= '1990-01-01';
