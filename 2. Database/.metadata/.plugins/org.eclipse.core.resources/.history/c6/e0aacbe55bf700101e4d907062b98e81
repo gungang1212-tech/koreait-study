@@ -67,12 +67,9 @@ CREATE TABLE board_foreign(
 	writer_id int,
 	CONSTRAINT fk_wriker FOREIGN KEY (writer_id)
 	REFERENCES member_primary(member_primary_id)
-	ON DELETE CASCADE  
 );
 
 DROP TABLE board_foreign;
-
-
 
 
 
@@ -83,14 +80,10 @@ VALUES('test1'),
 
 SELECT * FROM member_primary;
 
-INSERT INTO board_foreign(title, writer_id) VALUES('게시글 제목!!', 1);
-
+INSERT INTO board_foreign(title, writer_id) VALUES('게시글 제목!!', 4);
 SELECT * FROM board_foreign;
 
-DELETE FROM member_primary 
-WHERE member_primary_id = 1;
 
-SELECT * FROM member_primary;
 
 
 

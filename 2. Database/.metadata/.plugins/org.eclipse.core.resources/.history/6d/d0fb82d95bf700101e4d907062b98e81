@@ -138,3 +138,7 @@ DROP TABLE ddl_alter;
 DROP TABLE free_board;
 DROP TABLE staff;
 DROP TABLE test_member;
+
+
+
+

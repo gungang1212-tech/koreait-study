@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item id="NodeList/MySQLTable">
+		<column name="테이블명" visible="true" order="0" width="102"/>
+		<column name="Engine" visible="true" order="1" width="100"/>
+		<column name="Auto Increment" visible="true" order="2" width="100"/>
+		<column name="Data Length" visible="true" order="3" width="100"/>
+		<column name="Partitioned" visible="true" order="4" width="100"/>
+		<column name="Description" visible="true" order="5" width="100"/>
+	</item>
+	<item id="NodeList/MySQLTableConstraintColumn">
+		<column name="이름" visible="true" order="0" width="100"/>
+		<column name="Column" visible="true" order="1" width="100"/>
+	</item>
+	<item id="SchemaSelector">
+		<column name="Database Name" visible="true" order="0" width="100"/>
+		<column name="Default Charset" visible="true" order="1" width="100"/>
+		<column name="Default Collation" visible="true" order="2" width="105"/>
+		<column name="SQL Path" visible="true" order="3" width="100"/>
+		<column name="Database size" visible="true" order="4" width="100"/>
+	</item>
+</items>
