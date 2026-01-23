@@ -1,0 +1,69 @@
+SELECT * FROM employees
+ORDER BY birth_date DESC;
+
+SELECT * FROM titles
+ORDER BY to_date DESC;
+
+
+SELECT max(salary) FROM salaries s ;
+SELECT min(salary) FROM salaries s;
+SELECT avg(salary) FROM salaries s;
+SELECT sum(salary) FROM salaries s;
+SELECT count(*) FROM salaries;
+
+SELECT count(*) AS '직원 수' FROM employees;
+
+-- titles 테이블에서 title이 Engineer인 직원의 수를 조회하세요.
+SELECT count(*) FROM titles
+WHERE title = 'engineer';
+
+-- employees 테이블에서 입사일이 1965년 1월 1일 이후인 직원의 수를 조회하세요
+SELECT count(*) FROM employees
+WHERE hire_date > '1965-01-01';
+
+-- employees 테이블에서 emp_no가 가장 낮은 직원과 가장 높은 직원을 조회하세요
+SELECT min(emp_no), max(emp_no) FROM employees;
+
+SELECT min(emp_no) FROM employees;
+
+
+SELECT max(emp_no), first_name, birth_date FROM employees
+GROUP BY first_name, birth_date;
+
+-- 부서별 직원 수 구하기
+--  - 부서 번호(dept_no) 조회
+SELECT count(*), dept_no FROM dept_emp
+GROUP BY dept_no;
+
+-- employees 테이블에서 성별 직원 수를 구하세요.
+--  성별 : gender
+--  직원수 (별칭 : “cnt”)
+-- titles 테이블에서 직무별 직원 수를 구하세요.
+--  직무 : title
+--  직원 수 (별칭 : “직원 수”)
+--  직무별 내림차순으로 정렬하여 조회하세요.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

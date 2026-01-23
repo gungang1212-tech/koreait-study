@@ -56,10 +56,42 @@ SELECT * FROM employees
 WHERE first_name LIKE '%ar%';
 
 SELECT * FROM employees
-WHERE first_name LIKE '_di';
+WHERE first_name LIKE '_di__%';
 
 SELECT * FROM employees
 WHERE first_name LIKE 'G__';
+
+SELECT * FROM titles
+WHERE to_date IS NOT NULL; 
+
+SELECT * FROM departments d 
+WHERE dept_no IN('d005', 'd009');
+
+
+SELECT * FROM departments d 
+WHERE dept_no = 'd005'
+OR dept_no = 'd009'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,28 @@
+SELECT * FROM employees
+ORDER BY birth_date DESC;
+
+SELECT * FROM titles
+ORDER BY to_date DESC;
+
+
+SELECT max(salary) FROM salaries s ;
+SELECT min(salary) FROM salaries s;
+SELECT avg(salary) FROM salaries s;
+SELECT sum(salary) FROM salaries s;
+SELECT count(*) FROM salaries;
+
+SELECT count(*) AS '직원 수' FROM employees;
+
+-- titles 테이블에서 title이 Enginner인 직원의 수를 조회하세요.
+-- employees 테이블에서 입사일이 1965년 1월 1일 이후인 직원의 수를 조회하세요
+-- employees 테이블에서 emp_no가 가장 낮은 직원과 가장 높은 직원을 조회하세요
+
+
+
+
+
+
+
+
+
+
