@@ -1,0 +1,5 @@
+SELECT * FROM employees;
+
+SELECT first_name, gender, emp_no FROM employees
+WHERE first_name LIKE "G%";
+

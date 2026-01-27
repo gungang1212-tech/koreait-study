@@ -1,0 +1,12 @@
+SELECT * FROM employees;
+
+SELECT first_name, gender, emp_no FROM employees
+WHERE first_name LIKE "G%";
+
+CREATE TABLE employee2;
+
+
+select A.name , B.position_name 
+from employees as A
+join position as B on B.id = A.position_id
+group by position_id

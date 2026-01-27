@@ -1,0 +1,7 @@
+CREATE DATABASE lol2 DEFAULT CHARACTER SET UTF8;
+SHOW DATABASES;
+
+USE lol2;
+
+INSERT into (이름, 나이)
+values("카밀", 24);

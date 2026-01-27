@@ -1,0 +1,23 @@
+SELECT * FROM employees;
+
+SELECT first_name, gender, emp_no FROM employees
+WHERE first_name LIKE "G%";
+
+
+
+
+-- 
+-- select A.name , B.position_name 
+-- from employees as A
+-- join position as B on B.id = A.position_id
+-- group by position_id
+
+
+-- salaries 테이블 그룹화 후 employees 테이블과 병합
+
+SELECT * FROM salaries;
+SELECT * FROM employees;
+-- -- 
+SELECT * FROM salaries
+WHERE emp_no
+GROUP BY (salary, from_date, to_date);
