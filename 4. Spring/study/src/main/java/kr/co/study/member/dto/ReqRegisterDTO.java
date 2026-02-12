@@ -10,7 +10,7 @@ import lombok.ToString;
 /**
  * 회원가입 요청을 받는 DTO 입니다.
  * 회원가입에 필요한 정보(id, name, password, ...)를 받습니다.
- */
+ */ 
 @Getter  // Getter 생성
 @Setter	 // Setter 생성
 @NoArgsConstructor  // 기본 생성자

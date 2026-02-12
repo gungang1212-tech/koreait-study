@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor 
 @AllArgsConstructor
 public class ReqLoginDTO {
 	private String userId;

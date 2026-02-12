@@ -68,7 +68,9 @@ public class NoticeController {
 	 */
 	@GetMapping("/detail")
 	public String detail(@RequestParam(name="id") Long id, Model model) {
-		boardService.getBoardDetail(id);
+		ResBoardDTO response = boardService.getBoardDetail(id);
+		model.addAttribute("notice", response);
+		return "pages/board/notice-detail";
 	}
 	
 	@GetMapping("/create/form")

@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResLoginDTO {
+public class ResLoginDTO { 
 	private Long id;
 	private String userId;
 	private String userName;

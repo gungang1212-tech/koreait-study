@@ -24,8 +24,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class NoticeServiceImpl implements BoardService {
 	private final BoardRepository boardRepository;
-	private final MemberRepository memberRepository;
-	
+	private final MemberRepository memberRepository; 
+	 
 	@Override
 	@Transactional
 	public void write(ReqBoardDTO request, Long writerId) {
@@ -95,7 +95,7 @@ public class NoticeServiceImpl implements BoardService {
 	//  5. 최종적으로 종료되며 트랜잭션 commit 수행
 	@Override
 	@Transactional
-	public void getBoardDetail(Long id) {
+	public ResBoardDTO getBoardDetail(Long id) {
 		// 1. 게시글 조회
 		Board board = boardRepository.findById(id).orElse(null);
 		

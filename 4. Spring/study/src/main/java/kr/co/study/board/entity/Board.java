@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Board {
 	@Id // PK 지정
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // auto_increment
-	private Long id;
+	private Long id; 
 	
 	// 게시판 종류 구분
 	//  - NOTICE : 공지사항

@@ -7,10 +7,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter
+@Setter 
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString 
 public class ReqBoardDTO {
 	private String category;
 	private String title;

@@ -8,13 +8,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Setter 
 @Getter 
 @NoArgsConstructor
 @AllArgsConstructor 
-@Builder
+@Builder 
 public class ResBoardDTO {
-	private Long id;
-	private String category;
+	private Long id; 
+	private String category; 
 	private String title;
 	private String content;
 	private String writerName;

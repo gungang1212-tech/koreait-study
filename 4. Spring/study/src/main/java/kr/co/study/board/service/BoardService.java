@@ -39,7 +39,7 @@ public interface BoardService {
 	 *  - PK로 조건을 주므로 조회 결과는 무조건 1개의 게시글
 	 * @param id 게시글 PK
 	 */
-	void getBoardDetail(Long id);
+	ResBoardDTO getBoardDetail(Long id);
 
 }
 

@@ -16,10 +16,10 @@ import lombok.RequiredArgsConstructor;
 @Controller // 컨트롤러임을 선언하는 어노테이션
 @RequestMapping("/member") // URL 매핑(GET+POST)
 @RequiredArgsConstructor // final 키워드가 붙은 필드에 대한 생성자를 만듬(생성자 주입 방식)
-public class MemberController { 
+public class MemberController {  
 	 
 	// 필드 주입 방식 (권장 X)
-	// @Autowired
+	// @Autowired 
 	// private MemberService memberService;
 	private final MemberService memberService;
 	
