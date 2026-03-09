@@ -1,5 +1,5 @@
 package chapter11;
 
-public class Banana {
+public class Banana extends Fruit {
 
 }

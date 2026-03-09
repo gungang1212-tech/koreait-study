@@ -11,6 +11,12 @@ import Props from './pages/06_Props.jsx'
 import Rendering from './pages/07_Rendering.jsx'
 
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
+import ListRendering from './pages/08_ListRendering.jsx'
+import EventHandler from './pages/09_EventHandler.jsx'
+import State from './pages/10_State.jsx'
+import UseState from './pages/11_ObjectState.jsx'
+import FormHandling from './pages/12_FormHandling.jsx'
+import Lifting from './pages/13_Lifting.jsx'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +46,30 @@ const router = createBrowserRouter([
   {
     path: "/07",
     element: <Rendering />
+  },
+  {
+    path: "/08",
+    element: <ListRendering />
+  },
+  {
+    path: "/09",
+    element: <EventHandler />
+  },
+  {
+    path: "/10",
+    element: <State />
+  },
+  {
+    path: "/11",
+    element: <UseState />
+  },
+  {
+    path: "/12",
+    element: <FormHandling />
+  },
+  {
+    path: "/13",
+    element: <Lifting />
   }
 ])
 

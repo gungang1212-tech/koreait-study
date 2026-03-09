@@ -1,5 +1,5 @@
 package chapter11;
 
-public class Apple {
+public class Apple extends Fruit {
 
 }
