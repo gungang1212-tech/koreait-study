@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 
 @Getter 
@@ -12,6 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor  
 @AllArgsConstructor
 @Schema(description="회원가입 요청 DTO")
+@ToString
 public class ReqRegisterDTO {
 	@Schema(description="유저 이름", example="홍길동")
 	private String userName;
