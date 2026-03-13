@@ -9,8 +9,7 @@ export const useCheckMemberQuery = () => {
         queryFn: checkMemberApi,
         retry: false, // 재시도 안함
         refetchOnWindowFocus: true, // 다른 탭 갔다오면 다시 확인
-        staleTime: 0, // 항상 최신 상태 확인
-        cacheTime: 0
+        staleTime: 0 // 항상 최신 상태 확인
     })
 }
 
