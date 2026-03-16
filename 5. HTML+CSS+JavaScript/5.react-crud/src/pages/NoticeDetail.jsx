@@ -121,7 +121,7 @@ function NoticeDetail() {
                                 rows={3}
                                 defaultValue={""}
                             />
-                            <button className="btn btn-primary" onclick="submitComment()">
+                            <button className="btn btn-primary" onClick={() => submitComment()}>
                                 댓글 작성
                             </button>
                         </div>

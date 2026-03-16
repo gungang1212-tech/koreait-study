@@ -2,9 +2,13 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useNoticeDetailQuery } from "../query/NoticeDetailQuery"
 import useUserStore from "../store/userStore";
 import { useState } from "react";
+import { useNoticeDeleteMutation } from "../query/NoticeDeleteMutation";
+import { useNoticeEditFormQuery } from "../query/NoticeEditFormQuery.js";
 
 export const useNoticeDetailHook = () => {
+    const NoticeDeleteMutation = useNoticeDeleteMutation();
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const noticeEditFormQuery = useNoticeEditFormQuery();
     
     // 경로파라미터 가져오기
     const {id} = useParams();
@@ -28,11 +32,13 @@ export const useNoticeDetailHook = () => {
 
     // 목록으로 돌아가기
     const goToList = () => {
-        navigate('/notice')
+        navigate('/notice/list')
     }
 
     // 수정 페이지로 이동
     const goToEdit = () => {
+
+        
         if(postId) navigate(`/notice/edit/${postId}`)
     }
 
@@ -56,7 +62,8 @@ export const useNoticeDetailHook = () => {
         //      > 함수명 : noticeDeleteApi
         //      > URI : /api/board/notice/{postId}
         //      > Method : DELETE
-        
+        NoticeDeleteMutation.mutate(postId);
+
         alert("게시글이 삭제되었습니다.");
         closeDeleteModal();
         goToList(); // 리스트 페이지로 이동
