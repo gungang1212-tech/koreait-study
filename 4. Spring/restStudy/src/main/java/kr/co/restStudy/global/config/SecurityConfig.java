@@ -11,7 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
+import org.springframework.session.web.http.DefaultCookieSerializer;
 // 스프링 실행 시점에 스프링 컨테이너가 관리할 빈(Bean) 객체들을
 // 자바 기반 설정으로 등록 및 설정하는 클래스임을 정의
 @Configuration
@@ -40,7 +40,7 @@ public class SecurityConfig {
 		CorsConfiguration config = new CorsConfiguration();
 		
 		
-		config.setAllowedOrigins(List.of("http://localhost"));
+		config.setAllowedOrigins(List.of("https://d3dnecrll4wnax.cloudfront.net"));
 		config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE"));
 		config.setAllowedHeaders(List.of("*"));
 		config.setAllowCredentials(true); // 세션, 쿠키 전달 허용
@@ -48,6 +48,14 @@ public class SecurityConfig {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", config); // 전체 경로 적용
 		return source;
+	}
+	@Bean
+	public DefaultCookieSerializer cookieSerializer() {
+	    DefaultCookieSerializer serializer = new DefaultCookieSerializer();
+	    serializer.setSameSite("None"); // 크로스 도메인 간 쿠키 전송 허용
+	    serializer.setUseSecureCookie(true); // HTTPS 환경 필수
+	    // serializer.setDomainName("your-backend-domain.com"); // 필요 시 설정
+	    return serializer;
 	}
 } 
  

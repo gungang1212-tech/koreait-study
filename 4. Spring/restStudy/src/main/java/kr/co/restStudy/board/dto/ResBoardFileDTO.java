@@ -16,7 +16,7 @@ public class ResBoardFileDTO {
 	private Long fileSize;
 	private String filePath;
 	private String contentType;
-
+	
 }
 
 

@@ -1,10 +1,10 @@
-package kr.co.studyProject;
+package kr.co.restStudy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StudyProjectApplicationTests {
+class ErdCloudPrApplicationTests {
 
 	@Test
 	void contextLoads() {

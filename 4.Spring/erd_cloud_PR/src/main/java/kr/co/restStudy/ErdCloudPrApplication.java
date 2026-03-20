@@ -1,13 +1,13 @@
-package kr.co.studyProject;
+package kr.co.restStudy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StudyProjectApplication {
+public class ErdCloudPrApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StudyProjectApplication.class, args);
+		SpringApplication.run(ErdCloudPrApplication.class, args);
 	}
 
 }
