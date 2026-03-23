@@ -1,4 +1,7 @@
-package kr.co.restStudy.Member;
+// 보류중...............
+
+
+package kr.co.restStudy.Entity;
 
 public enum MemberStatus {
     ACTIVE("재직"),   // 이미지의 '재직'
