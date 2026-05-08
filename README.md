@@ -1,4 +1,4 @@
-[README (1).md](https://github.com/user-attachments/files/27503931/README.1.md)
+[README (1).md](https://github.com/user-attachments/files/27504485/README.1.md)
 # AllPick Backend
 
 > Spring Boot 기반 쇼핑몰 플랫폼 백엔드 서버
