@@ -1,4 +1,3 @@
-[README (1).md](https://github.com/user-attachments/files/27504485/README.1.md)
 # AllPick Backend
 
 > Spring Boot 기반 쇼핑몰 플랫폼 백엔드 서버
@@ -12,6 +11,7 @@
 - [프로젝트 구조](#프로젝트-구조)
 - [시작하기](#시작하기)
 - [환경 변수](#환경-변수)
+- [팀원 역할 분담](#팀원-역할-분담)
 - [ERD](#erd)
 - [API 문서](#api-문서)
 - [도메인별 API 목록](#도메인별-api-목록)
@@ -139,9 +139,21 @@ cd AP-Spring
 
 ---
 
-## ERD
+## 팀원 역할 분담
 
-[![ERD](https://www.erdcloud.com/d/pqPaLT6pQmbfkQKt9)](https://www.erdcloud.com/d/pqPaLT6pQmbfkQKt9)
+| 이름 | 담당 기능 | 담당 도메인 |
+|------|-----------|-------------|
+| 홍길동 | 예) 회원가입, 로그인, SMS 인증 | 👤 회원 - 인증, SMS |
+| 홍길동 | 예) 상품 등록/수정/삭제, 카테고리 | 🛒 쇼핑 - 상품, 카테고리 |
+| 홍길동 | 예) 주문, 장바구니, 쿠폰 | 🛒 쇼핑 - 주문, 장바구니, 쿠폰 |
+| 홍길동 | 예) 판매자 인증, 문의/클레임 처리 | 🏪 판매자, 🎧 CS |
+| 홍길동 | 예) 관리자 기능, FAQ, 공지사항 | 🔧 관리자 |
+
+> 팀원별 실제 담당 내용으로 수정해주세요.
+
+---
+
+## ERD
 
 > 👉 [ERDCloud에서 전체 보기](https://www.erdcloud.com/d/pqPaLT6pQmbfkQKt9)
 
@@ -158,6 +170,13 @@ http://localhost:8080/swagger-ui/index.html
 ---
 
 ## 도메인별 API 목록
+
+> **인증 범례**
+> - `불필요` — 누구나 접근 가능
+> - `ROLE_USER` — 로그인한 회원 또는 판매자 (JWT 토큰 필요)
+> - `ROLE_SUPER_ADMIN` — 슈퍼 어드민 전용
+> - `ROLE_CS_ADMIN` — CS 어드민 전용
+> - `ROLE_SUPER_ADMIN / ROLE_CS_ADMIN` — 둘 중 하나
 
 ### 👤 회원
 
@@ -176,12 +195,12 @@ http://localhost:8080/swagger-ui/index.html
 
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
-| GET | `/api/members/me` | 내 정보 조회 | 필요 |
+| GET | `/api/members/me` | 내 정보 조회 | ROLE_USER |
 | GET | `/api/members/check-email` | 이메일 중복 확인 | 불필요 |
-| PATCH | `/api/members/me` | 내 정보 수정 | 필요 |
-| PATCH | `/api/members/me/password` | 비밀번호 변경 | 필요 |
-| DELETE | `/api/members/me` | 회원 탈퇴 | 필요 |
-| GET | `/api/members/me/orders` | 내 주문 목록 조회 | 필요 |
+| PATCH | `/api/members/me` | 내 정보 수정 | ROLE_USER |
+| PATCH | `/api/members/me/password` | 비밀번호 변경 | ROLE_USER |
+| DELETE | `/api/members/me` | 회원 탈퇴 | ROLE_USER |
+| GET | `/api/members/me/orders` | 내 주문 목록 조회 | ROLE_USER |
 
 </details>
 
@@ -209,7 +228,7 @@ http://localhost:8080/swagger-ui/index.html
 
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
-| GET | `/api/membership/history/{memberId}` | 멤버십 이력 조회 | 필요 |
+| GET | `/api/membership/history/{memberId}` | 멤버십 이력 조회 | ROLE_USER |
 
 </details>
 
@@ -224,10 +243,10 @@ http://localhost:8080/swagger-ui/index.html
 |--------|-----|------|------|
 | GET | `/api/products` | 상품 목록 조회 | 불필요 |
 | GET | `/api/products/{productId}` | 상품 상세 조회 | 불필요 |
-| POST | `/api/products` | 상품 등록 | 필요 |
-| PATCH | `/api/products/{productId}` | 상품 수정 | 필요 |
-| DELETE | `/api/products/{productId}` | 상품 삭제 | 필요 |
-| GET | `/api/products/seller` | 판매자 상품 목록 조회 | 필요 |
+| POST | `/api/products` | 상품 등록 | ROLE_USER |
+| PATCH | `/api/products/{productId}` | 상품 수정 | ROLE_USER |
+| DELETE | `/api/products/{productId}` | 상품 삭제 | ROLE_USER |
+| GET | `/api/products/seller` | 판매자 상품 목록 조회 | ROLE_USER |
 
 </details>
 
@@ -249,8 +268,8 @@ http://localhost:8080/swagger-ui/index.html
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
 | GET | `/api/reviews/{productId}` | 상품 리뷰 목록 조회 | 불필요 |
-| POST | `/api/reviews` | 리뷰 작성 | 필요 |
-| PATCH | `/api/reviews/{reviewId}` | 리뷰 수정 | 필요 |
+| POST | `/api/reviews` | 리뷰 작성 | ROLE_USER |
+| PATCH | `/api/reviews/{reviewId}` | 리뷰 수정 | ROLE_USER |
 
 </details>
 
@@ -259,11 +278,11 @@ http://localhost:8080/swagger-ui/index.html
 
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
-| POST | `/api/carts` | 장바구니 상품 추가 | 필요 |
-| GET | `/api/carts/{memberId}` | 장바구니 목록 조회 | 필요 |
-| DELETE | `/api/carts/{cartItemId}` | 장바구니 상품 단건 삭제 | 필요 |
-| DELETE | `/api/carts/selected` | 장바구니 선택 상품 삭제 | 필요 |
-| DELETE | `/api/carts/clear` | 장바구니 전체 비우기 | 필요 |
+| POST | `/api/carts` | 장바구니 상품 추가 | ROLE_USER |
+| GET | `/api/carts/{memberId}` | 장바구니 목록 조회 | ROLE_USER |
+| DELETE | `/api/carts/{cartItemId}` | 장바구니 상품 단건 삭제 | ROLE_USER |
+| DELETE | `/api/carts/selected` | 장바구니 선택 상품 삭제 | ROLE_USER |
+| DELETE | `/api/carts/clear` | 장바구니 전체 비우기 | ROLE_USER |
 
 </details>
 
@@ -272,11 +291,11 @@ http://localhost:8080/swagger-ui/index.html
 
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
-| POST | `/api/coupons` | 쿠폰 생성 | 필요 |
-| POST | `/api/coupons/{couponId}/members/{memberId}` | 쿠폰 발급 | 필요 |
-| GET | `/api/coupons/members/{memberId}` | 회원 쿠폰 목록 조회 | 필요 |
-| GET | `/api/coupons/members/{memberId}/unused` | 미사용 쿠폰 목록 조회 | 필요 |
-| GET | `/api/coupons/search` | 쿠폰 검색 | 필요 |
+| POST | `/api/coupons` | 쿠폰 생성 | ROLE_USER |
+| POST | `/api/coupons/{couponId}/members/{memberId}` | 쿠폰 발급 | ROLE_USER |
+| GET | `/api/coupons/members/{memberId}` | 회원 쿠폰 목록 조회 | ROLE_USER |
+| GET | `/api/coupons/members/{memberId}/unused` | 미사용 쿠폰 목록 조회 | ROLE_USER |
+| GET | `/api/coupons/search` | 쿠폰 검색 | ROLE_USER |
 
 </details>
 
@@ -285,13 +304,13 @@ http://localhost:8080/swagger-ui/index.html
 
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
-| POST | `/api/orders` | 주문 생성 | 필요 |
-| GET | `/api/orders/{orderId}` | 주문 상세 조회 | 필요 |
-| GET | `/api/orders/{orderId}/payment` | 결제 정보 조회 | 필요 |
-| POST | `/api/orders/addresses` | 배송지 등록 | 필요 |
-| GET | `/api/orders/addresses` | 배송지 목록 조회 | 필요 |
-| PATCH | `/api/orders/addresses/{addressId}` | 배송지 수정 | 필요 |
-| DELETE | `/api/orders/addresses/{addressId}` | 배송지 삭제 | 필요 |
+| POST | `/api/orders` | 주문 생성 | ROLE_USER |
+| GET | `/api/orders/{orderId}` | 주문 상세 조회 | ROLE_USER |
+| GET | `/api/orders/{orderId}/payment` | 결제 정보 조회 | ROLE_USER |
+| POST | `/api/orders/addresses` | 배송지 등록 | ROLE_USER |
+| GET | `/api/orders/addresses` | 배송지 목록 조회 | ROLE_USER |
+| PATCH | `/api/orders/addresses/{addressId}` | 배송지 수정 | ROLE_USER |
+| DELETE | `/api/orders/addresses/{addressId}` | 배송지 삭제 | ROLE_USER |
 
 </details>
 
@@ -306,8 +325,8 @@ http://localhost:8080/swagger-ui/index.html
 |--------|-----|------|------|
 | POST | `/api/seller/auth/signup` | 판매자 회원가입 | 불필요 |
 | POST | `/api/seller/auth/login` | 판매자 로그인 | 불필요 |
-| PATCH | `/api/seller/auth/{sellerId}` | 판매자 정보 수정 | 필요 |
-| DELETE | `/api/seller/auth/{sellerId}` | 판매자 탈퇴 | 필요 |
+| PATCH | `/api/seller/auth/{sellerId}` | 판매자 정보 수정 | ROLE_USER |
+| DELETE | `/api/seller/auth/{sellerId}` | 판매자 탈퇴 | ROLE_USER |
 
 </details>
 
@@ -316,8 +335,8 @@ http://localhost:8080/swagger-ui/index.html
 
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
-| POST | `/api/sellers/apply` | 판매자 신청 | 필요 |
-| GET | `/api/sellers/apply/status` | 판매자 신청 상태 조회 | 필요 |
+| POST | `/api/sellers/apply` | 판매자 신청 | ROLE_USER |
+| GET | `/api/sellers/apply/status` | 판매자 신청 상태 조회 | ROLE_USER |
 
 </details>
 
@@ -330,14 +349,14 @@ http://localhost:8080/swagger-ui/index.html
 
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
-| POST | `/api/inquiries` | 문의 등록 | 필요 |
-| GET | `/api/inquiries/{inquiryId}` | 문의 단건 조회 | 필요 |
-| GET | `/api/inquiries/my` | 내 문의 목록 조회 | 필요 |
+| POST | `/api/inquiries` | 문의 등록 | ROLE_USER |
+| GET | `/api/inquiries/{inquiryId}` | 문의 단건 조회 | ROLE_USER |
+| GET | `/api/inquiries/my` | 내 문의 목록 조회 | ROLE_USER |
 | GET | `/api/inquiries/admin` | 어드민 문의 목록 조회 | ROLE_SUPER_ADMIN / ROLE_CS_ADMIN |
-| GET | `/api/inquiries/seller` | 판매자 문의 목록 조회 | 필요 |
+| GET | `/api/inquiries/seller` | 판매자 문의 목록 조회 | ROLE_USER |
 | POST | `/api/inquiries/{inquiryId}/answers/admin` | 어드민 문의 답변 등록 | ROLE_SUPER_ADMIN / ROLE_CS_ADMIN |
-| POST | `/api/inquiries/{inquiryId}/answers/seller` | 판매자 문의 답변 등록 | 필요 |
-| PATCH | `/api/inquiries/{inquiryId}/cancel` | 문의 취소 | 필요 |
+| POST | `/api/inquiries/{inquiryId}/answers/seller` | 판매자 문의 답변 등록 | ROLE_USER |
+| PATCH | `/api/inquiries/{inquiryId}/cancel` | 문의 취소 | ROLE_USER |
 
 </details>
 
@@ -346,15 +365,15 @@ http://localhost:8080/swagger-ui/index.html
 
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
-| POST | `/api/claims` | 클레임 등록 | 필요 |
-| GET | `/api/claims/{claimId}` | 클레임 단건 조회 | 필요 |
-| GET | `/api/claims/my` | 내 클레임 목록 조회 | 필요 |
-| GET | `/api/claims/admin` | 어드민 클레임 목록 조회 | 필요 |
-| PATCH | `/api/claims/{claimId}/status` | 클레임 상태 변경 | 필요 |
-| PATCH | `/api/claims/{claimId}/reject` | 클레임 거절 | 필요 |
-| PATCH | `/api/claims/{claimId}/cancel` | 클레임 취소 | 필요 |
-| PATCH | `/api/claims/{claimId}/approve` | 클레임 승인 | 필요 |
-| PATCH | `/api/claims/{claimId}/seller-reject` | 판매자 클레임 거절 | 필요 |
+| POST | `/api/claims` | 클레임 등록 | ROLE_USER |
+| GET | `/api/claims/{claimId}` | 클레임 단건 조회 | ROLE_USER |
+| GET | `/api/claims/my` | 내 클레임 목록 조회 | ROLE_USER |
+| GET | `/api/claims/admin` | 어드민 클레임 목록 조회 | ROLE_USER |
+| PATCH | `/api/claims/{claimId}/status` | 클레임 상태 변경 | ROLE_USER |
+| PATCH | `/api/claims/{claimId}/reject` | 클레임 거절 | ROLE_USER |
+| PATCH | `/api/claims/{claimId}/cancel` | 클레임 취소 | ROLE_USER |
+| PATCH | `/api/claims/{claimId}/approve` | 클레임 승인 | ROLE_USER |
+| PATCH | `/api/claims/{claimId}/seller-reject` | 판매자 클레임 거절 | ROLE_USER |
 
 </details>
 
@@ -363,11 +382,11 @@ http://localhost:8080/swagger-ui/index.html
 
 | Method | URL | 설명 | 인증 |
 |--------|-----|------|------|
-| POST | `/api/attachments/inquiry/{inquiryId}` | 문의 첨부파일 업로드 | 필요 |
-| POST | `/api/attachments/claim/{claimId}` | 클레임 첨부파일 업로드 | 필요 |
-| GET | `/api/attachments/inquiry/{inquiryId}` | 문의 첨부파일 목록 조회 | 필요 |
-| GET | `/api/attachments/claim/{claimId}` | 클레임 첨부파일 목록 조회 | 필요 |
-| DELETE | `/api/attachments/{attachmentId}` | 첨부파일 삭제 | 필요 |
+| POST | `/api/attachments/inquiry/{inquiryId}` | 문의 첨부파일 업로드 | ROLE_USER |
+| POST | `/api/attachments/claim/{claimId}` | 클레임 첨부파일 업로드 | ROLE_USER |
+| GET | `/api/attachments/inquiry/{inquiryId}` | 문의 첨부파일 목록 조회 | ROLE_USER |
+| GET | `/api/attachments/claim/{claimId}` | 클레임 첨부파일 목록 조회 | ROLE_USER |
+| DELETE | `/api/attachments/{attachmentId}` | 첨부파일 삭제 | ROLE_USER |
 
 </details>
 
@@ -442,9 +461,6 @@ http://localhost:8080/swagger-ui/index.html
 | DELETE | `/api/notices/{noticeId}` | 공지사항 삭제 | ROLE_SUPER_ADMIN / ROLE_CS_ADMIN |
 
 </details>
-
----
-
 ## 공통 응답 형식
 
 모든 API는 아래 형식으로 응답합니다.
